@@ -26,6 +26,17 @@ struct AppContextTests {
         #expect(env == .debug || env == .release)
     }
 
+    @Test("runtime property is accessible without crashing")
+    func runtimeProperty() {
+        _ = context.runtime
+    }
+
+    @Test("runtime is either simulator or device")
+    func runtimeIsValid() {
+        let runtime = context.runtime
+        #expect(runtime == .simulator || runtime == .device)
+    }
+
     @Test("custom bundle can be injected at init")
     func customBundleInjection() {
         let custom = AppContext(bundle: .main)

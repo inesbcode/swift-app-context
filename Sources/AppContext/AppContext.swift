@@ -101,4 +101,12 @@ public struct AppContext {
     public nonisolated var environment: AppEnvironment {
         .current
     }
+
+    /// The runtime environment derived from the `targetEnvironment` compilation condition.
+    ///
+    /// Delegates to ``AppRuntime/current``. Returns `.simulator` when running inside a
+    /// simulator, `.device` when running on a physical device.
+    public nonisolated var runtime: AppRuntime {
+        .current
+    }
 }
